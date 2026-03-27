@@ -13,10 +13,14 @@ namespace MVCProject.Controllers
             return View("Index", Students);;
         }
 
+
+
         public IActionResult Details(int id ) { 
            StudentBL studentBL=new StudentBL();
            Student student = studentBL.GetById(id);
-           return View(student);
+           return View("Details",student);
         }
+
+
     }
 }

@@ -17,5 +17,12 @@ namespace MVCProject.Models
             return Context.Departments.FirstOrDefault(D => D.Id == id);
         }
 
+
+        public void AddDept(Department deptSent)
+        {
+            Context.Departments.Add(deptSent);
+
+            Context.SaveChanges();
+        }
     }
 }
