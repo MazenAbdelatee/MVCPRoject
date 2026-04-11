@@ -8,7 +8,7 @@ namespace MVCProject.Models
         public int Grade { get; set; }
 
         [ForeignKey("Course")]
-        public int CoursetId { get; set; }
+        public int CourseId { get; set; }
         public Course Course { get; set; }
 
 

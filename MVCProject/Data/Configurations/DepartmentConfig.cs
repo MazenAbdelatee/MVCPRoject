@@ -8,7 +8,7 @@ namespace MVCProject.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Department> D)
         {
-            D.ToTable("Depatments");
+            D.ToTable("Departments");
 
             D.HasKey(D => D.Id);
 

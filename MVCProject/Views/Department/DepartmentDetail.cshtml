@@ -1,0 +1,61 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<div class="container mt-4">
+    <h2>Department Details</h2>
+    <hr />
+
+    @* --- Department Info Card --- *@
+    <div class="card shadow-sm mb-4 border-primary">
+        <div class="card-body">
+            @* Assuming your department has a Name property. Adjust if it's DeptName etc. *@
+            <h3 class="card-title text-primary">@Model.Name</h3>
+            <p class="card-text fs-5">
+                <strong>Department ID:</strong> @Model.Id
+            </p>
+        </div>
+    </div>
+
+    @* --- Students Section --- *@
+    <h4 class="mt-4">Enrolled Students</h4>
+
+    @* 2. Always check if the related collection is null or empty before looping *@
+    @if (Model.Students != null && Model.Students.Any())
+    {
+        <table class="table table-bordered table-striped mt-3 shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    @* Assuming your Student model has Id and Name properties *@
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Student Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* 3. Loop through the Included students *@
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td>@student.Id</td>
+                        <td>@student.Name</td>
+                        <td>@student.Age</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        @* Friendly message if the department exists but has no students yet *@
+        <div class="alert alert-warning mt-3" role="alert">
+            No students are currently enrolled in this department.
+        </div>
+    }
+
+    @* --- Navigation --- *@
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Back to Departments List</a>
+    </div>
+</div>

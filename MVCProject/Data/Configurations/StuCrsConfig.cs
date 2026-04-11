@@ -11,7 +11,7 @@ namespace MVCProject.Data.Configurations
             SC.ToTable("Students_Courses");
 
 
-            SC.HasKey(SC => new { SC.StudentId, SC.CoursetId });
+            SC.HasKey(SC => new { SC.StudentId, SC.CourseId });
 
 
             SC.Property(SC => SC.Grade);
@@ -26,7 +26,7 @@ namespace MVCProject.Data.Configurations
 
             SC.HasOne(Sc => Sc.Course)
                 .WithMany(S => S.StuCrses)
-                .HasForeignKey(SC => SC.CoursetId)
+                .HasForeignKey(SC => SC.CourseId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
