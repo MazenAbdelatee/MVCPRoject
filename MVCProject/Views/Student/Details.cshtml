@@ -1,5 +1,24 @@
 ﻿@model Student
 
-<h1>@Model.Name<h1/>
-<p> @Model.Age <p/>
+@{
+    ViewData["Title"] = "Student Details";
+}
 
+<div class="container mt-4">
+    <h2>Student Details</h2>
+    <hr />
+
+    <div class="card shadow-sm mb-4 border-info">
+        <div class="card-body">
+            <h3 class="card-title text-info">@Model.Name</h3>
+            <p class="card-text fs-5">
+                <strong>Student ID:</strong> @Model.Id <br />
+                <strong>Age:</strong> @Model.Age
+            </p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model StudentWithExtraInfoViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            @* A clean, shadow-lifted card to contain the form *@
+            <div class="card shadow border-0 rounded-3">
+
+                @* Card Header *@
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h4 class="mb-0"> Edit Student Info</h4>
+                </div>
+
+                @* Card Body *@
+                <div class="card-body p-4">
+                    <form asp-controller="Student" asp-action="SaveEdit" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        @* Student Name Field *@
+                        <div class="mb-3">
+                            <label asp-for="StudentName" class="form-label fw-bold">Student Name</label>
+                            <input asp-for="StudentName" class="form-control" placeholder="e.g. John Doe" />
+                            <span asp-validation-for="StudentName" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        @* Age Field *@
+                        <div class="mb-3">
+                            <label asp-for="Age" class="form-label fw-bold">Age</label>
+                            <input asp-for="Age" type="number" class="form-control" placeholder="e.g. 20" />
+                            <span asp-validation-for="Age" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        @* Department Dropdown *@
+                        <div class="mb-4">
+                            <label asp-for="DeptId" class="form-label fw-bold">Department</label>
+                            <select asp-for="DeptId" asp-items="Model.Departments" class="form-select">
+                                <option value="">-- Select a Department --</option>
+                            </select>
+                            <span asp-validation-for="DeptId" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        @* Buttons *@
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg"> Update Student</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Back to Student List </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

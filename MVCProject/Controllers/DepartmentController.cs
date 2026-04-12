@@ -37,7 +37,6 @@ namespace MVCProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View("Add", DeptSent);
-        
         }
 
         public IActionResult DeleteDept(int id) { 
